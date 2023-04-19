@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+from quizzes.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/quizzes/', QuizAPIListCreateView.as_view()),
+    path('api/quizzes/<int:pk>/', QuizAPIDetailView.as_view()),
+    path('api/quizzes/questions/', QuestionAPIListCreateView.as_view()),
+    path('api/quizzes/questions/<int:pk>/', QuestionAPIDetailView.as_view()),
+    path('api/quizzes/questions/answers/', AnswerAPIListCreateView.as_view()),
+    path('api/quizzes/questions/answers/<int:pk>/', AnswerAPIDetailView.as_view()),
     path('api/users/auth/', include('djoser.urls')),
     re_path(r'^api/users/auth/', include('djoser.urls.authtoken')),
 ]
