@@ -27,7 +27,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class QuizSerializer(serializers.ModelSerializer):
     questions = QuestionSerializer(many=True, required=False)
-    category = CategorySerializer(required=False)
 
     class Meta:
         model = Quiz
